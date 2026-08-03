@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    @apply bg-capsule-void text-capsule-parchment font-body bg-grain;
+}
+
+::selection {
+    @apply bg-capsule-brass/30 text-capsule-parchment;
+}
+
+/* Focus visibility kept intentional, not stripped */
+:focus-visible {
+    outline: 2px solid theme('colors.capsule.brass');
+    outline-offset: 2px;
+}
+
+@layer components {
+    .wax-seal {
+        @apply relative flex items-center justify-center rounded-full bg-gradient-to-br from-capsule-brass to-capsule-brassDim text-capsule-void shadow-seal;
+    }
+
+    .wax-seal::after {
+        content: '';
+        @apply absolute inset-0 rounded-full border border-black/10;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-md bg-capsule-brass px-4 py-2 text-sm font-semibold text-capsule-void transition hover:bg-[#dcae4c] focus-visible:outline-2 focus-visible:outline-capsule-brass disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center gap-2 rounded-md border border-capsule-line px-4 py-2 text-sm font-medium text-capsule-parchmentDim transition hover:border-capsule-brass/60 hover:text-capsule-parchment;
+    }
+
+    .field-label {
+        @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-capsule-parchmentFaint;
+    }
+
+    .field-input {
+        @apply w-full rounded-md border-capsule-line bg-capsule-panel2 text-capsule-parchment placeholder:text-capsule-parchmentFaint focus:border-capsule-brass focus:ring-capsule-brass;
+    }
+
+    .card {
+        @apply rounded-lg border border-capsule-line bg-capsule-panel;
+    }
+}
